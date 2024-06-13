@@ -33,4 +33,4 @@ Create .env file with GOOGLE_PROJECT_ID and GOOGLE_STORAGE_BUCKET.
 1. Not possible to create a glossary in "global" - only in us-central1. Doesn't matter where the bucket is located.  (us,eu,europe-west1, us-central1).
 2. To create a glossary in eu, europe-west1 is needed and api_endpoint should be translate-eu.googleapis.com.
 3. To translate a document - global endpoint is needed, not supported by regional endpoints. Glossary can only be in us-central1 as a consquence, documents are processed in US.
-4. When creating a glossary and specifying display_name, display_name is ignore and the last part of name is used as name for the Glossary.
+4. When creating a glossary and specifying display_name, display_name is ignored and the last part of name is used as name for the Glossary.

@@ -15,13 +15,8 @@ load_dotenv()
 GOOGLE_PROJECT_ID = os.getenv("GOOGLE_PROJECT_ID")
 GOOGLE_STORAGE_BUCKET = os.getenv("GOOGLE_STORAGE_BUCKET")
 
-
-
-client = translate.TranslationServiceClient(client_options=ClientOptions(api_endpoint="translate.googleapis.com"))
-storage_client = storage.Client()
-
+api_endpoint = "translate.googleapis.com"
 location = "us-central1"
-
 
 # Set variables
 source_lang_code = "en"
@@ -29,6 +24,13 @@ target_lang_codes = ["da","sv"]
 timeout = 60 
 uuid = uuid4()
 input_uri = f"gs://{GOOGLE_STORAGE_BUCKET}/{uuid}.csv"
+
+# clients
+
+client = translate.TranslationServiceClient(client_options=ClientOptions(api_endpoint=api_endpoint))
+storage_client = storage.Client()
+
+
 
 # Upload a glossary for importing.
 bucket = storage_client.bucket(GOOGLE_STORAGE_BUCKET)

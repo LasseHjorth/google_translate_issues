@@ -19,8 +19,7 @@ api_endpoint = "translate.googleapis.com"
 location = "us-central1"
 
 # Set variables
-source_lang_code = "en"
-target_lang_codes = ["da","sv"]
+termset_languages = ["en","da","sv"]
 timeout = 60 
 uuid = uuid4()
 input_uri = f"gs://{GOOGLE_STORAGE_BUCKET}/{uuid}.csv"
@@ -42,7 +41,7 @@ blob.upload_from_filename("resources/glossary.csv")
 
 name = client.glossary_path(GOOGLE_PROJECT_ID, location, f"glosssary_{uuid}")
 language_codes_set = translate.types.Glossary.LanguageCodesSet(
-    language_codes=[source_lang_code] + target_lang_codes
+    language_codes=termset_languages
 )
 
 gcs_source = translate.types.GcsSource(input_uri=input_uri)
